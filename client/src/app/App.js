@@ -1,79 +1,80 @@
 /**
   * @file      Renders the app
   * @author    Luke Boyle
-  * @version   1.0.0
-  * @since     1.0.0
+  * @since     23 Jun 2023
+  * 
+  * Dev Log 
+  * ----------------------------------------------------------------
+  * Who    | When         | What                       | Why
+  * ----------------------------------------------------------------
+  * Luke B | 23 Jun 2022 | DEPENDENCIES and VARIABLES  | Created
+  * Luke B | 23 Jun 2022 | COMPONENT                   | Created
+  * Luke B | 23 Jun 2022 | EXPORT                      | Created
+  * Luke B | 17 Feb 2024 | ROUTES                      | Updated to point to routes folder
+  * 
 */
 
-/* 
-==============================================================
-  DEPENDENCIES and VARIABLES
-============================================================== 
-*/
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// DEPENDENCIES and VARIABLES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-import './App.scss';
+  import './App.scss';
 
-// React Dependencies
-import React from 'react';
-import { 
-  Routes, 
-  Route 
-} from 'react-router-dom';
+  // React Dependencies
+  import React, { useState } from 'react';
+  import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Import containers
-import Homepage from '../containers/Homepage';
-import Board from '../containers/Board';
+  // Import containers
+  import Homepage from '../containers/Homepage';
+  import Board from '../containers/Board';
 
-// Import components
-import Navbar   from '../components/layout/Navbar/Navbar';
+  // Import components
+  import Navbar   from '../components/layout/Navbar/Navbar';
 
-/* 
-==============================================================
-  COMPONENT
-============================================================== 
-*/
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// COMPONENT
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-function App() {
-  return (
-    <div className="App">
-      {/* Navbar */}
-      <Navbar />
+  const APP = () => {
+    return (
+      <Router>
+        <div className="App">
+          {/* Navbar */}
+          {/* <Navbar /> */}
 
-      {/* Routes */}
-      <Routes>
-        {/* Home */}
-        <Route path="/" element={ 
-          <Homepage /> 
-        } />
+          {/* Routes */}
+          <Routes>
+            {/* Home */}
+            <Route 
+              path="/" 
+              exact 
+              element={ 
+                <Homepage /> 
+              } 
+            />
 
-        {/* Board */}
-        <Route path="board" element={ 
-          <Board /> 
-        } />
+            {/* Catch all */}
+            <Route 
+              path="*" 
+              element={
+                <div>
+                  <h1>404</h1>
+                  <p>Page not found</p>
+                </div>
+              } 
+            />
+          </Routes>
+        </div>
+      </Router>
+    );
+  }
 
-        {/* Catch all */}
-        <Route path="*" element={
-          <div>
-            <h1>404</h1>
-            <p>Page not found</p>
-          </div>
-        } />
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// EXPORT
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-      </Routes>
-    </div>
-  );
-}
+  export default APP;
 
-/* 
-==============================================================
-  EXPORT
-============================================================== 
-*/
-
-export default App;
-
-/*
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  END OF FILE
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-*/
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// END OF FILE
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

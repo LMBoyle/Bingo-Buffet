@@ -1,26 +1,28 @@
 {
-  "name": "buzz-word-bingo",
-  "version": "1.0.0",
-  "main": "server.js",
-  "repository": "git@github.com:LMBoyle/buzz-word-bingo.git",
-  "author": "LMBoyle",
-  "private": false,
+  "name":           "Bingo-Buffet",
+  "version":        "1.0.0",
+  "main":           "server/server.js",
+  "repository":     "git@github.com:LMBoyle/Bingo-Buffet.git",
+  "author":         "LMBoyle",
+  "private":        false,
   "scripts": {
-    "install": "cd server && npm i && cd ../client && npm i",
-    "server": "cd server && npm run start",
-    "client": "cd client && npm run start",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server/server.js --ignore client",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":        "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
+    "start:prod":   "node server/server.js",
+    "start:dev":    "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
+    "server":       "cd server/server && yarn run start",
+    "client":       "cd client && yarn run start",
+    "install":      "cd server/server && npm i && cd ../client && npm i",
+    "build":        "cd client && yarn run build",
+    "test":         "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "concurrently": "^7.2.2",
-    "eslint": "^8.18.0"
+    "eslint":       "^8.18.0"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "nodemon": "^2.0.18"
+    "cors":         "^2.8.5",
+    "dotenv":       "^16.0.1",
+    "express":      "^4.18.2",
+    "nodemon":      "^2.0.18"
   }
 }
