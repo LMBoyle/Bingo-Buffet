@@ -39,12 +39,12 @@
   const APP         = EXPRESS();
 
   // Set Port
-  const PORT        = process.env.PORT || 3001;
+  const PORT        = process.env.PORT || 1745;
 
   // Set cors options
-  let corsOptions   = { 
-    origin: 'http://localhost:3000' 
-  };
+  // let corsOptions   = { 
+  //   origin: 'http://localhost:3000' 
+  // };
 
   // TODO DB Config
 
@@ -55,7 +55,8 @@
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
   // Cors middleware
-  APP.use(CORS(corsOptions));
+  // APP.use(CORS(corsOptions));
+  APP.use(CORS());
 
   // Parse requests of content-type - APPlication/json
   APP.use(EXPRESS.json());
@@ -82,8 +83,6 @@
 
   APP.listen(PORT, () => {
     console.log(`Server running on localhost:${PORT}`);
-
-    // TODO Call connect to MongoDB
   });
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

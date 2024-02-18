@@ -20,7 +20,7 @@ import ReactDOM           from 'react-dom/client';
 import reportWebVitals    from './reportWebVitals';
 import { BrowserRouter }  from 'react-router-dom';
 
-import App                from './app/App';
+import App                from './app/App.js';
 
 // CSS
 import './index.scss';
@@ -40,9 +40,7 @@ import './index.scss';
 
   root.render(
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </React.StrictMode>
   );
 
