@@ -36,30 +36,31 @@ import Navbar   from '../components/layout/Navbar/Navbar';
 function App() {
   return (
     <div className="App">
+      <Homepage /> 
       {/* Navbar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Routes */}
-      <Routes>
+      {/* <Routes> */}
         {/* Home */}
-        <Route path="/" element={ 
+        {/* <Route path="/" element={ 
           <Homepage /> 
-        } />
+        } /> */}
 
         {/* Board */}
-        <Route path="board" element={ 
+        {/* <Route path="board" element={ 
           <Board /> 
-        } />
+        } /> */}
 
         {/* Catch all */}
-        <Route path="*" element={
+        {/* <Route path="*" element={
           <div>
             <h1>404</h1>
             <p>Page not found</p>
           </div>
-        } />
+        } /> */}
 
-      </Routes>
+      {/* </Routes> */}
     </div>
   );
 }

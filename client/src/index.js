@@ -1,15 +1,18 @@
 /**
-  * @file      Renders the app
-  * @author    Luke Boyle
-  * @version   1.0.0
-  * @since     1.0.0
+ * @description   Renders the App
+ * @author        Luke Boyle
+ * @since         23 Jun 2022
+ * Dev Log --------------------------------------------------------
+ * Who    | When         | What                       | Why
+ * ----------------------------------------------------------------
+ * Luke B | 23 Jun 2022  | IMPORTS/DEPENDENCIES       | Created
+ * Luke B | 23 Jun 2022  | GLOBAL VARIABLES           | Created
+ * 
 */
 
-/* 
-==============================================================
-  DEPENDENCIES and VARIABLES
-============================================================== 
-*/
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// IMPORTS/DEPENDENCIES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 // React Dependencies
 import React              from 'react';
@@ -22,35 +25,35 @@ import App                from './app/App';
 // CSS
 import './index.scss';
 
-// Create Root
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// GLOBAL VARIABLES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-/* 
-==============================================================
-  APP
-============================================================== 
-*/
+  // Get the Root
+  const container = document.getElementById('root');
+  // Create Root
+  const root = ReactDOM.createRoot(container);
 
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// APP
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-/* 
-==============================================================
-  WEB VITAL METRICS
-============================================================== 
-*/
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
 
-/*
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  END OF FILE
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-*/
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// WEB VITAL METRICS
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+  // If you want to start measuring performance in your app, pass a function
+  // to log results (for example: reportWebVitals(console.log))
+  // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+  reportWebVitals();
+
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// END OF FILE
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -25,23 +25,27 @@
 // VARIABLES
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-  const projects = [
+  // All the bingo types
+  const gameTypes = [
     {
-      "name": "Tic-Tac-Bingo",
-      "route": "",
+      "name":           "Tic-Tac-Bingo",
+      "description":    "A grid of nine boxes. Fill in the words you want to display.",
+      "route":          "",
       "underConstruct": false
     },
     {
-      "name": "Classic Bingo",
-      "route": "",
+      "name":           "Classic Bingo",
+      "description":    "Exactly what the name is! Classic Bingo cards! Select how many you want and then go play.",
+      "route":          "",
       "underConstruct": true
     },
     {
-      "name": "Buzz Word Bingo",
-      "route": "",
+      "name":           "Buzz Word Bingo",
+      "description":    "Size of a classic bingo card but fill in your own words to display.",
+      "route":          "",
       "underConstruct": true
     }
-  ]
+  ];
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // COMPONENT

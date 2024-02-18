@@ -1,89 +1,96 @@
 /**
-  * @file      Sets up the server
-  * @author    Luke Boyle
-  * @version   1.0.0
-  * @since     1.0.0
+  * @description  Sets up the server
+  * @author       Luke Boyle
+  * @since        23 Jun 2022
+  * 
+  * Dev Log --------------------------------------------------------
+  * Who    | When         | What                       | Why
+  * ----------------------------------------------------------------
+  * Luke B | 23 Jun 2022 | DEPENDENCIES                | Created
+  * Luke B | 23 Jun 2022 | VARIABLES                   | Created
+  * Luke B | 23 Jun 2022 | EXPRESS                     | Created
+  * Luke B | 23 Jun 2022 | ROUTES                      | Created
+  * Luke B | 23 Jun 2022 | LISTEN                      | Created
+  * Luke B | 23 Jun 2022 | DATABASE (MongoDB)          | Created
+  * Luke B | 23 Jun 2022 | DEV ENV ONLY TOOLS          | Created
+  * Luke B | 17 Feb 2024 | ROUTES                      | Updated to point to routes folder
+  * 
 */
 
-/*
-==============================================================
-  DEPENDENCIES and VARIABLES
-============================================================== 
-*/
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// DEPENDENCIES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-const EXPRESS     = require("express");
-const CORS        = require("cors");
-require("dotenv").config();
+  // Express/Cors
+  const EXPRESS     = require("express");
+  const CORS        = require("cors");
 
-// Initialise Express
-const APP         = EXPRESS();
+  // Dot Env
+  require("dotenv").config();
+  
+  // Routes
+  const routes = require("./routes");
 
-// Set Port
-const PORT        = process.env.PORT || 3001;
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// VARIABLES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-// Set cors options
-let corsOptions   = { 
-  origin: 'http://localhost:3000' 
-};
+  // Initialise Express
+  const APP         = EXPRESS();
 
-// TODO DB Config
+  // Set Port
+  const PORT        = process.env.PORT || 3001;
 
-// TODO MongoDB connection URI
+  // Set cors options
+  let corsOptions   = { 
+    origin: 'http://localhost:3000' 
+  };
 
-/*
-==============================================================
-  EXPRESS
-============================================================== 
-*/
+  // TODO DB Config
 
-// Cors middleware
-APP.use(CORS(corsOptions));
+  // TODO MongoDB connection URI
 
-// Parse requests of content-type - APPlication/json
-APP.use(EXPRESS.json());
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// EXPRESS
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-// Parse requests of content-type - APPlication/x-www-form-urlencoded
-APP.use(EXPRESS.urlencoded({ extended: true }));
+  // Cors middleware
+  APP.use(CORS(corsOptions));
 
-/*
-==============================================================
-  DATABASE (MongoDB)
-============================================================== 
-*/
+  // Parse requests of content-type - APPlication/json
+  APP.use(EXPRESS.json());
 
-// TODO Connect to Database
+  // Parse requests of content-type - APPlication/x-www-form-urlencoded
+  APP.use(EXPRESS.urlencoded({ extended: true }));
 
-/*
-==============================================================
-  ROUTES
-============================================================== 
-*/
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// DATABASE (MongoDB)
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-APP.get("/", (req, res) => res.json({ msg: "Welcome to the APP" }));
+  // TODO Connect to Database
 
-// TODO API Routes
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// ROUTES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-/*
-==============================================================
-  LISTEN
-============================================================== 
-*/
+  // Use ./routes
+  APP.use(routes);
 
-APP.listen(PORT, () => {
-  console.log(`Server running on localhost:${PORT}`);
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// LISTEN
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-  // TODO Call connect to MongoDB
-});
+  APP.listen(PORT, () => {
+    console.log(`Server running on localhost:${PORT}`);
 
-/*
-==============================================================
-  DEV ENV ONLY TOOLS
-==============================================================
-*/
+    // TODO Call connect to MongoDB
+  });
+
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// DEV ENV ONLY TOOLS
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 
-/*
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  END OF FILE
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-*/
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// END OF FILE
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
