@@ -1,47 +1,69 @@
 /**
  * @file      Creates the homepage
  * @author    Luke Boyle
- * @version   1.0.0
  * @since     1.0.0
+ * Dev Log --------------------------------------------------------
+ * Who    | When         | What                       | Why
+ * ----------------------------------------------------------------
+ * Luke B | 23 Jun 2022  | DEPENDENCIES and VARIABLES | Created
+ * Luke B | 23 Jun 2022  | COMPONENT                  | Created
+ * Luke B | 23 Jun 2022  | EXPORT                     | Created
+ * Luke B | 17 Feb 2024  | All section breaks         | Updated formatting
+
 */
 
-/* 
-==============================================================
-  DEPENDENCIES and VARIABLES
-============================================================== 
-*/
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// DEPENDENCIES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-// React Dependencies
-import React from "react";
+  // React Dependencies
+  import React from "react";
 
-// MUI Dependencies
+  // MUI Dependencies
 
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// VARIABLES
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-/* 
-==============================================================
-  COMPONENT
-============================================================== 
-*/
+  const projects = [
+    {
+      "name": "Tic-Tac-Bingo",
+      "route": "",
+      "underConstruct": false
+    },
+    {
+      "name": "Classic Bingo",
+      "route": "",
+      "underConstruct": true
+    },
+    {
+      "name": "Buzz Word Bingo",
+      "route": "",
+      "underConstruct": true
+    }
+  ]
 
-function Homepage() {
-  // HTML content
-  return (
-    <main className="C-Homepage">
-      Homepage
-    </main>
-  );
-};
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// COMPONENT
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-/* 
-==============================================================
-  EXPORT
-============================================================== 
-*/
+  function Homepage() {
+    // HTML content
+    return (
+      <main className="C-Homepage">
+        <h1> Welcome to Buffet Bingo! </h1>
+        <h2> Select your game below! </h2>
+        {/* Display a card for each game type */}
+      </main>
+    );
+  };
 
-export default Homepage;
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// EXPORT
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-/*
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  END OF FILE
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-*/
+  export default Homepage;
+
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// END OF FILE
+// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

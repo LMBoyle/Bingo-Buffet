@@ -16,6 +16,7 @@ This project is simple bingo card generator for meetings.
 * React
 * Node
 * SASS
+* MUI
 
 ### Package Manager
 * [yarn](https://yarnpkg.com/)
