@@ -38,7 +38,7 @@
   const APP = () => {
     return (
       <Router>
-        {/* <div className="App"> */}
+        <div className="App">
           {/* Navbar */}
           {/* <Navbar /> */}
 
@@ -64,7 +64,7 @@
               } 
             />
           </Routes>
-        {/* </div> */}
+        </div>
       </Router>
     );
   }

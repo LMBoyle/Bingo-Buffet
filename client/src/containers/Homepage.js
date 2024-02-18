@@ -21,28 +21,31 @@
 
   // MUI Dependencies
 
+  // Custom Components
+  import GameCard from '../components/cards/GameCard/GameCard'
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // VARIABLES
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
   // All the bingo types
-  const gameTypes = [
+  const GAME_TYPES = [
     {
       "name":           "Tic-Tac-Bingo",
       "description":    "A grid of nine boxes. Fill in the words you want to display.",
-      "route":          "",
+      "route":          "/game/tic-tac-bingo",
       "underConstruct": false
     },
     {
       "name":           "Classic Bingo",
       "description":    "Exactly what the name is! Classic Bingo cards! Select how many you want and then go play.",
-      "route":          "",
+      "route":          "/game/classic",
       "underConstruct": true
     },
     {
       "name":           "Buzz Word Bingo",
       "description":    "Size of a classic bingo card but fill in your own words to display.",
-      "route":          "",
+      "route":          "/game/buzz-word",
       "underConstruct": true
     }
   ];
@@ -58,6 +61,13 @@
         <h1> Welcome to Buffet Bingo! </h1>
         <h2> Select your game below! </h2>
         {/* Display a card for each game type */}
+        {GAME_TYPES.map(game => (
+          <GameCard
+            name        = {game.name}
+            description = {game.description}
+            link        = {game.route}
+          />
+        ))}
       </main>
     );
   };

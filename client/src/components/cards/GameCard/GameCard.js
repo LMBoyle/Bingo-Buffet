@@ -21,6 +21,12 @@
   import React, { useState, useEffect } from "react";
   import { Link as RouterLink }         from "react-router-dom";
 
+  // MUI Dependencies
+  import Card               from '@mui/material/Card';
+  import CardContent        from '@mui/material/CardContent';
+  import { CardActionArea } from '@mui/material';
+  import Typography         from '@mui/material/Typography';
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //  VARIABLES
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -29,28 +35,24 @@
 //  COMPONENT
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-  function GameCard() {
-
+  function GameCard( data ) {
     // HTML content to display
     return (
-      <header>
-        <AppBar 
-          sx={{
-            bgcolor: "#400CCC",
-            pr: "79px",
-            pl: {
-              xs: 0,
-              sm: 118
-            },
-          }}
-        >
-          {
-            isMobileView 
-              ? displayMobileNav() 
-              : displayDesktopNav()
-          }
-        </AppBar>
-      </header>
+      <Card>
+        <CardActionArea component={RouterLink} to={data.link}>
+          <CardContent>
+            {/* Card Header */}
+            <Typography variant="h5" component="div">
+              {data.name}
+            </Typography>
+
+            {/* Card Body */}
+            <Typography variant="body2">
+              {data.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     );
   }
 
