@@ -25,8 +25,9 @@
   import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
   // Import containers
-  import Homepage from '../containers/Homepage';
-  import Board from '../containers/Board';
+  import Homepage     from '../containers/Homepage';
+  import Board        from '../containers/Board';
+  import TicTacBoard  from '../containers/TicTacBingoBoard';
 
   // Import components
   import Navbar   from '../components/layout/Navbar/Navbar';
@@ -53,13 +54,61 @@
               } 
             />
 
+            {/* GAME ROUTES */}
+            {/* Tic Tac */}
+            <Route 
+              path="/game/tic-tac-bingo" 
+              exact 
+              element={ 
+                <TicTacBoard /> 
+              } 
+            />
+
+            {/* Classic */}
+            <Route 
+              path="/game/classic" 
+              exact 
+              element={ 
+                <Homepage /> 
+              } 
+            />
+
+            {/* Buzz Word Bingo */}
+            <Route 
+              path="/game/buzz-word" 
+              exact 
+              element={ 
+                <Homepage /> 
+              } 
+            />
+
+            {/* ERROR PAGES */}
+            {/* Under Construction */}
+            <Route 
+              path="/underConstruction" 
+              exact 
+              element={ 
+                <div>
+                  <h1> Pardon our Dust </h1>
+                  
+                  <p> This page is still under construction, please come back later. </p>
+
+                  <p> If you're a coder, come help us! Head over to the 
+                    <a href="https://github.com/LMBoyle/Bingo-Buffet" target="_blank"> 
+                      repo. 
+                    </a>
+                  </p>
+                </div>
+              } 
+            />
+
             {/* Catch all */}
             <Route 
               path="*" 
               element={
                 <div>
-                  <h1>404</h1>
-                  <p>Page not found</p>
+                  <h1> 404 </h1>
+                  <p> Page not found </p>
                 </div>
               } 
             />
