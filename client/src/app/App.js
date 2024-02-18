@@ -21,16 +21,15 @@
   import './App.scss';
 
   // React Dependencies
-  import React, { useState } from 'react';
+  import React from 'react';
   import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
   // Import containers
   import Homepage     from '../containers/Homepage';
-  import Board        from '../containers/Board';
-  import TicTacBoard  from '../containers/TicTacBingoBoard';
+  import TicTacBingo  from '../containers/TicTacBingo';
 
   // Import components
-  import Navbar   from '../components/layout/Navbar/Navbar';
+  // import Navbar   from '../components/layout/Navbar/Navbar';
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // COMPONENT
@@ -60,7 +59,7 @@
               path="/game/tic-tac-bingo" 
               exact 
               element={ 
-                <TicTacBoard /> 
+                <TicTacBingo /> 
               } 
             />
 
@@ -90,7 +89,7 @@
               element={ 
                 <div>
                   <h1> Pardon our Dust </h1>
-                  
+
                   <p> This page is still under construction, please come back later. </p>
 
                   <p> If you're a coder, come help us! Head over to the 

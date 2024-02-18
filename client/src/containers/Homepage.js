@@ -66,6 +66,7 @@
             name        = {game.name}
             description = {game.description}
             link        = {game.route}
+            reroute     = {game.underConstruct}
           />
         ))}
       </main>

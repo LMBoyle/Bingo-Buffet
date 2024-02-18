@@ -39,7 +39,12 @@
     // HTML content to display
     return (
       <Card>
-        <CardActionArea component={RouterLink} to={data.link}>
+        {/* Makes card clickable and routes to the game page */}
+        <CardActionArea 
+          component={RouterLink} 
+          to={data.reroute ? "/underConstruction" : data.link}
+        >
+          {/* Content of card */}
           <CardContent>
             {/* Card Header */}
             <Typography variant="h5" component="div">
