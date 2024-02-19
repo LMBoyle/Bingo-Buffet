@@ -26,7 +26,6 @@
   import CardContent        from '@mui/material/CardContent';
   import { CardActionArea } from '@mui/material';
   import Typography         from '@mui/material/Typography';
-
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //  VARIABLES
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -36,9 +35,10 @@
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
   function GameCard( data ) {
+
     // HTML content to display
     return (
-      <Card>
+      <Card sx={{margin: '2px'}}>
         {/* Makes card clickable and routes to the game page */}
         <CardActionArea 
           component={RouterLink} 
