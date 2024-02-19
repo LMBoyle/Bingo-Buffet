@@ -1,10 +1,7 @@
 #TicTacBoard {
-  display: flex;
-  flex-direction: row;
-}
-
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  cursor: pointer;
+  position: relative;
 }

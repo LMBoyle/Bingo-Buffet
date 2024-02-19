@@ -20,12 +20,13 @@
   import React from "react";
 
   // MUI Dependencies
+  import Grid from '@mui/material/Grid';
 
   // Custom Components
   import BoardSquare from '../../boardComponents/BoardSquare/BoardSquare'
 
   // Custom CSS
-  import './TicTacBoard';
+  import './TicTacBoard.scss';
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // VARIABLES
@@ -57,9 +58,15 @@
     // HTML content
     return (
       <section id="TicTacBoard">
-        {squares.map((sqr, i) => {
-          return <BoardSquare value={sqr.val} index={i} />
-        })}
+        {/* <Grid container spacing={0}> */}
+          {squares.map((sqr, i) => {
+            return (
+              // <Grid xs={4}>
+                <BoardSquare value={sqr.val} index={i} />
+              // </Grid>
+            )
+          })}
+        {/* </Grid> */}
       </section>
     );
   };
