@@ -26,7 +26,8 @@
 
 
   // Custom Components
-  import TicTacBoard from "../components/boards/TicTacBoard/TicTacBoard";
+  import TicTacBoard  from "../components/boards/TicTacBoard/TicTacBoard";
+  import WordInput    from "../components/boardComponents/WordInput/WordInput";
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // VARIABLES
@@ -43,63 +44,101 @@
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
   function TicTacBingo() {
-    const [
-      showBoard, 
-      setShowBoard
-    ] = useState(false);
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // STATE
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    const TOGGLE_PLAY = () => {
-      setShowBoard(!showBoard);
-    };
+      const [
+        showBoard, 
+        setShowBoard
+      ] = useState(false);
 
-    let buttonText = showBoard ? "Edit Values" : "Let's Play!";
+      const [
+        formFields, 
+        setFormFields
+      ] = useState([])
 
-    // HTML content
-    return (
-      <main className="C-TicTacBoard, Board-Container">
-        {/* Button edit or play */}
-        <Button variant="contained" onClick={TOGGLE_PLAY}>
-          {buttonText}
-        </Button>
+      const TOGGLE_PLAY = () => {
+        setShowBoard(!showBoard);
+      };
 
-        { showBoard ? 
-          (
-            <TicTacBoard
-              // squares = {gameValues}
-            />
-          ) : (
-            // <Input/>
-            <p> Edit mode </p>
-          )
-        }
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // VARIABLES
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-        <section id='GameInstructions'>
-          { !showBoard ? 
-            ( // Input instruction
-              <div>
-                <Typography variant="body1"> Enter nine (9) items then click on "Let's Play!" </Typography>
-              </div>
-            ) : ( // Game instruction
-              <div>
-                <Typography variant="body1"> When an item on your board is called, click on the square to colour it. </Typography>
-                <Typography variant="body2"> If you accidentally click on a square, just click it again to un-colour it. </Typography>
-                <Typography variant="body2"> If you want to change your words, click on "Edit Values". </Typography>
-              </div>
+      let buttonText = showBoard ? "Edit Values" : "Let's Play!";
+
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // FUNCTIONS
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+      const GET_INPUT = (values) => {
+        console.log('val: ', values)
+        const allValues = values.map(val => {
+          return {
+            ...formFields,
+            word: val.word
+          }
+        })
+        // Add the field to the array
+        setFormFields(allValues);
+        console.log('form ', formFields)
+      }
+    
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // COMPONENT
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+      return (
+        <main className="C-TicTacBoard, Board-Container">
+          {/* Button edit or play */}
+          <Button variant="contained" onClick={TOGGLE_PLAY}>
+            {buttonText}
+          </Button>
+
+          { showBoard ? 
+            (
+              <TicTacBoard
+                squares = { formFields }
+              />
+            ) : (
+              // <Input/>
+              <WordInput 
+                numFields   = { 9 }
+                allowAdd    = { false }
+                allowRemove = { false }
+                callback    = { GET_INPUT }
+              />
             )
           }
-          <Typography variant="caption"> Anytime you want to go back, just click "Go Home" </Typography>
-        </section>
 
-        {/* Home button */}
-        <Button 
-          component = {Link} 
-          to        = "/"
-          variant   = 'contained'
-        > 
-          Go home
-        </Button>
-      </main>
-    );
+          <section id='GameInstructions'>
+            { !showBoard ? 
+              ( // Input instruction
+                <div>
+                  <Typography variant="body1"> Enter nine (9) items then click on "Let's Play!" </Typography>
+                </div>
+              ) : ( // Game instruction
+                <div>
+                  <Typography variant="body1"> When an item on your board is called, click on the square to colour it. </Typography>
+                  <Typography variant="body2"> If you accidentally click on a square, just click it again to un-colour it. </Typography>
+                  <Typography variant="body2"> If you want to change your words, click on "Edit Values". </Typography>
+                </div>
+              )
+            }
+            <Typography variant="caption"> Anytime you want to go back, just click "Go Home" </Typography>
+          </section>
+
+          {/* Home button */}
+          <Button 
+            component = {Link} 
+            to        = "/"
+            variant   = 'contained'
+          > 
+            Go home
+          </Button>
+        </main>
+      );
   };
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

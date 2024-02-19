@@ -17,7 +17,7 @@
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
   // React Dependencies
-  import React from "react";
+  import React, { useState } from "react";
 
   // MUI Dependencies
 
@@ -33,17 +33,17 @@
 
   // const WON_GAME = calculateWinner(squares);
 
-  const squares = [
-    {'val': 's1'},
-    {'val': 's2'},
-    {'val': 's3'},
-    {'val': 's4'},
-    {'val': 's5'},
-    {'val': 's6'},
-    {'val': 's7'},
-    {'val': 's8'},
-    {'val': 's9'},
-  ]
+  // const squares = [
+  //   {'val': 's1'},
+  //   {'val': 's2'},
+  //   {'val': 's3'},
+  //   {'val': 's4'},
+  //   {'val': 's5'},
+  //   {'val': 's6'},
+  //   {'val': 's7'},
+  //   {'val': 's8'},
+  //   {'val': 's9'},
+  // ]
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // FUNCTIONS
@@ -53,13 +53,14 @@
 // COMPONENT
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-  function TicTacBoard() {
+  function TicTacBoard( {squares} ) {
+    console.log(squares);
     // HTML content
     return (
-      <section id="TicTacBoard">
+      <section id="TicTacBoard" className="Main-Section">
         {squares.map((sqr, i) => {
           return (
-            <BoardSquare value={sqr.val} index={i} />
+            <BoardSquare value={sqr.word} index={i} />
           )
         })}
       </section>

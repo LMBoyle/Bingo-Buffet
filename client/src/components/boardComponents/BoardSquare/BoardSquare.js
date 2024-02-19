@@ -53,7 +53,7 @@
     const [
       buttonColor, 
       setButtonColor
-    ] = useState(GREEN);
+    ] = useState(WHITE);
 
 
     function handleColourChange( e ) {
