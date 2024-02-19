@@ -35,6 +35,18 @@
 
   // const WON_GAME = calculateWinner(squares);
 
+  const mockSquares = [
+    {word: "dog"},
+    {word: "cat"},
+    {word: "wolf"},
+    {word: "fish"},
+    {word: "tiger"},
+    {word: "bird"},
+    {word: "horse"},
+    {word: "chicken"},
+    {word: "cow"}
+  ]
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // FUNCTIONS
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -99,7 +111,7 @@
           { showBoard ? 
             (
               <TicTacBoard
-                squares = { formFields }
+                squares = { mockSquares }
               />
             ) : (
               // <Input/>
