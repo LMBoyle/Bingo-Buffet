@@ -36,31 +36,24 @@
     // STATE
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    const [formFields, setFormFields] = useState([
+    const [bingoWords, setBingoWords] = useState([
       { 
         word: ""
-      },
-    ])
-  
-    const ADD_FIELDS = () => {
-      // Create a new field
-      let newfield = {
-        word: ""
       }
-  
+    ])
+
+    const ADD_WORDS = (data) => {
       // Add the field to the array
-      setFormFields([...formFields, newfield])
+      setBingoWords([
+        ...bingoWords, 
+        {word: ""}
+      ])
     }
 
     const REMOVE_FIELDS = (index) => {
-      let data = [...formFields];
+      let data = [...bingoWords];
       data.splice(index, 1)
-      setFormFields(data)
-    }  
-
-    const SUBMIT = (e) => {
-      e.preventDefault();
-      console.log(formFields)
+      setBingoWords(data)
     }
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -70,13 +63,13 @@
     // Handle putting in data
     const HANDLE_INPUT = (event, index) => {
       // Get all the data
-      let data = [...formFields];
+      let data = [...bingoWords];
 
       // Set the current value and set it
       data[index][event.target.name] = event.target.value;
       
       // Set the fields
-      setFormFields(data);
+      setBingoWords(data);
     }
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -85,41 +78,12 @@
     return (
       <section id="WordInput" className="Main-Section">
         {/* INPUT FORM */}
-        <form>
-          {formFields.map((form, index) => {
-            return (
-              <div key={index}>
-                {/* Word input */}
-                <input
-                  name        = 'word'
-                  placeholder = 'your word here'
-                  onChange    = { event => HANDLE_INPUT( event, index ) }
-                  value       = { form.name }
-                />
-
-                {/* If fields can be removed */}
-                { allowRemove ? 
-                  (
-                    <Button  
-                      onClick={() => REMOVE_FIELDS( index) } 
-                      variant="contained"
-                      color="error"
-                    >
-                      Remove
-                    </Button>
-                  ) : (
-                    null
-                  )
-                }
-              </div>
-            )
-          })}
-        </form>
+        <div> This functionality is still in progress. You can click play and play with pre-set words. Check back soon!</div>
         {/* If fields can be added */}
         { allowAdd ? 
           (
             <Button 
-              onClick={ ADD_FIELDS } 
+              onClick={ ADD_WORDS } 
               variant="contained"
               color="success"
             > 
@@ -130,13 +94,13 @@
           )
         }
         <br />
-        <Button 
-          onClick={() => callback(formFields) } 
+        {/* <Button 
+          onClick={() => callback(bingoWords) } 
           variant="contained"
           color="success"
         > 
           Submit
-        </Button>
+        </Button> */}
       </section>
     );
   }
