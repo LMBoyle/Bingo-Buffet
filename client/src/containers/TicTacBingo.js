@@ -20,8 +20,10 @@
   import React, { useState } from "react";
 
   // MUI Dependencies
-  import Button from '@mui/material/Button';
-  import { Link } from 'react-router-dom';
+  import Button       from '@mui/material/Button';
+  import { Link }     from 'react-router-dom';
+  import Typography   from '@mui/material/Typography';
+
 
   // Custom Components
   import TicTacBoard from "../components/boards/TicTacBoard/TicTacBoard";
@@ -70,6 +72,23 @@
             <p> Edit mode </p>
           )
         }
+
+        <section id='GameInstructions'>
+          { !showBoard ? 
+            ( // Input instruction
+              <div>
+                <Typography variant="body1"> Enter nine (9) items then click on "Let's Play!" </Typography>
+              </div>
+            ) : ( // Game instruction
+              <div>
+                <Typography variant="body1"> When an item on your board is called, click on the square to colour it. </Typography>
+                <Typography variant="body2"> If you accidentally click on a square, just click it again to un-colour it. </Typography>
+                <Typography variant="body2"> If you want to change your words, click on "Edit Values". </Typography>
+              </div>
+            )
+          }
+          <Typography variant="caption"> Anytime you want to go back, just click "Go Home" </Typography>
+        </section>
 
         {/* Home button */}
         <Button 
