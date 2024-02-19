@@ -25,6 +25,9 @@
   // Custom CSS
   import './BoardSquare.scss';
 
+  // Other Dependencies
+  import ScaleText from "react-scale-text"
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // VARIABLES
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -71,7 +74,9 @@
         index     = { index }
         style     = { { backgroundColor: buttonColor } }
       >
-        { value }
+        <ScaleText widthOnly={true}>
+          { value }
+        </ScaleText>
       </button>
     );
   }
