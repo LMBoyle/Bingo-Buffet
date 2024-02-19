@@ -6,14 +6,14 @@
   "author": "LMBoyle",
   "private": false,
   "scripts": {
-    "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
+    "start":      "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
     "start:prod": "node server/server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
-    "server": "cd server && yarn run start",
-    "client": "cd client && yarn run start",
-    "install": "cd server && yarn install && cd ../client && yarn install",
-    "build": "cd client && yarn run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev":  "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
+    "server":     "cd server && yarn run start",
+    "client":     "cd client && yarn run start",
+    "install":    "cd server && yarn install && cd ../client && yarn install",
+    "build":      "cd client && yarn run build",
+    "test":       "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "concurrently": "^7.2.2",

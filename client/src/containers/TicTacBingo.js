@@ -126,7 +126,6 @@
                 </div>
               )
             }
-            <Typography variant="caption"> Anytime you want to go back, just click "Go Home" </Typography>
           </section>
 
           {/* Home button */}
