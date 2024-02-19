@@ -9,7 +9,7 @@
  * Luke B | 18 Feb 2024  | VARIABLES                  | Created
  * Luke B | 18 Feb 2024  | COMPONENT                  | Created
  * Luke B | 18 Feb 2024  | EXPORT                     | Created
- * 
+ * Luke B | 18 Feb 2024  | SCSS, BoardSquare          | Added
 */
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -20,7 +20,6 @@
   import React from "react";
 
   // MUI Dependencies
-  import Grid from '@mui/material/Grid';
 
   // Custom Components
   import BoardSquare from '../../boardComponents/BoardSquare/BoardSquare'
@@ -58,15 +57,11 @@
     // HTML content
     return (
       <section id="TicTacBoard">
-        {/* <Grid container spacing={0}> */}
-          {squares.map((sqr, i) => {
-            return (
-              // <Grid xs={4}>
-                <BoardSquare value={sqr.val} index={i} />
-              // </Grid>
-            )
-          })}
-        {/* </Grid> */}
+        {squares.map((sqr, i) => {
+          return (
+            <BoardSquare value={sqr.val} index={i} />
+          )
+        })}
       </section>
     );
   };

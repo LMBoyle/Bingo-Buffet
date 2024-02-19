@@ -11,24 +11,26 @@
 ============================================================== 
 */
 
-.App {
-  text-align: center;
-}
+  .App {
+    text-align: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  .Board-Container {
+    display: grid;
+    justify-items: center;
+  }
 
-.App-link {
-  color: #61dafb;
-}
+  main {
+    width: 75%;
+  }
+
+  .Board {
+    margin: 2% 0;
+  }
 
 /* 
 ==============================================================

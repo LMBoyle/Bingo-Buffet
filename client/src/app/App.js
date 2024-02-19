@@ -22,7 +22,10 @@
 
   // React Dependencies
   import React from 'react';
-  import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+  import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+  // MUI Dependencies
+  import Button from '@mui/material/Button';
 
   // Import containers
   import Homepage     from '../containers/Homepage';
@@ -92,11 +95,15 @@
 
                   <p> This page is still under construction, please come back later. </p>
 
-                  <p> If you're a coder, come help us! Head over to the 
-                    <a href="https://github.com/LMBoyle/Bingo-Buffet" target="_blank"> 
-                      repo. 
-                    </a>
-                  </p>
+                  <p> If you're a coder, come help us! Head over to the <a href="https://github.com/LMBoyle/Bingo-Buffet" target="_blank"> repo. </a></p>
+
+                  <Button 
+                    component = {Link} 
+                    to        = "/"
+                    variant   = 'contained'
+                  > 
+                    Get me out of here! 
+                  </Button>
                 </div>
               } 
             />
@@ -108,6 +115,14 @@
                 <div>
                   <h1> 404 </h1>
                   <p> Page not found </p>
+                  
+                  <Button 
+                    component = {Link} 
+                    to        = "/"
+                    variant   = 'contained'
+                  > 
+                    Get me out of here! 
+                  </Button>
                 </div>
               } 
             />

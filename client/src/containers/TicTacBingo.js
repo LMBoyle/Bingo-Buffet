@@ -21,6 +21,7 @@
 
   // MUI Dependencies
   import Button from '@mui/material/Button';
+  import { Link } from 'react-router-dom';
 
   // Custom Components
   import TicTacBoard from "../components/boards/TicTacBoard/TicTacBoard";
@@ -53,7 +54,7 @@
 
     // HTML content
     return (
-      <main className="C-TicTacBoard">
+      <main className="C-TicTacBoard, Board-Container">
         {/* Button edit or play */}
         <Button variant="contained" onClick={TOGGLE_PLAY}>
           {buttonText}
@@ -69,7 +70,15 @@
             <p> Edit mode </p>
           )
         }
-        
+
+        {/* Home button */}
+        <Button 
+          component = {Link} 
+          to        = "/"
+          variant   = 'contained'
+        > 
+          Go home
+        </Button>
       </main>
     );
   };
