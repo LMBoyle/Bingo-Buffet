@@ -33,18 +33,6 @@
 
   // const WON_GAME = calculateWinner(squares);
 
-  // const squares = [
-  //   {'val': 's1'},
-  //   {'val': 's2'},
-  //   {'val': 's3'},
-  //   {'val': 's4'},
-  //   {'val': 's5'},
-  //   {'val': 's6'},
-  //   {'val': 's7'},
-  //   {'val': 's8'},
-  //   {'val': 's9'},
-  // ]
-
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // FUNCTIONS
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
