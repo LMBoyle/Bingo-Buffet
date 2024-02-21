@@ -29,7 +29,7 @@
 
   // Import containers
   import Homepage     from '../containers/Homepage';
-  import TicTacBingo  from '../containers/TicTacBingo';
+  import TicTacBingo  from '../containers/Games/TicTacBingo';
 
   // Import components
   // import Navbar   from '../components/layout/Navbar/Navbar';
