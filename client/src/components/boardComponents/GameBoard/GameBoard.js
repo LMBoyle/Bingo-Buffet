@@ -20,7 +20,7 @@
   import React, { useState, useEffect } from "react";
 
   // MUI Dependencies
-
+  
   // Custom Components
   import BoardSquare from '../../boardComponents/BoardSquare/BoardSquare'
 
@@ -30,37 +30,71 @@
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // COMPONENT
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-  function GameBoard( { numSquares, bingoWords } ) {
+
+  const GameBoard = ({ bingoData }) => {
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // STATE
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
       const [
-        shuffledWords, 
-        setShuffledWords
+        shuffledData, 
+        setShuffledData
       ] = useState([]);
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // HOOKS
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    useEffect(() => {
-      setShuffledWords([...bingoWords.sort(() => Math.randon() - 0.5)])
-    }, [bingoWords]);
+      useEffect(() => {
+        setShuffledData([...bingoData].sort(() => Math.random() - 0.5));
+      }, [bingoData]);
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // CONTENT
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    return (
-      <section className="GameBoard, Main-Section">
-        {shuffledWords.slice( 0, numSquares ).map(( word, index ) => (
-          <BoardSquare 
-            value = { word } 
-            index = { index } 
-          />
-        ))}
-      </section>
-    );
+
+      /** 
+        * @description  Display each bingo square
+        * @author       Luke Boyle
+        *  
+        * Mod Log ----------------------------------------------------
+        * Who    | When        | Why
+        * ------------------------------------------------------------
+        * Luke B | 18 Feb 2024 | Created
+        * 
+      */
+      return (
+        <section className={ "Main-Section" }>
+          <table>
+            <tbody>
+              <tr className='Row'>
+                {shuffledData.slice(0, 3).map(( word, index ) => (
+                  <BoardSquare 
+                    value = { word } 
+                    index = { index } 
+                  />
+                ))}
+              </tr>
+              <tr className='Row'>
+                {shuffledData.slice(3, 6).map(( word, index ) => (
+                  <BoardSquare 
+                    value = { word } 
+                    index = { index } 
+                  />
+                ))}
+              </tr>
+              <tr className='Row'>
+                {shuffledData.slice(6, 9).map(( word, index ) => (
+                  <BoardSquare 
+                    value = { word } 
+                    index = { index } 
+                  />
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      );
   };
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

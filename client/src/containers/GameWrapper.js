@@ -31,28 +31,6 @@
   import WordInput    from "../components/boardComponents/WordInput/WordInput";
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-// VARIABLES
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-  // const WON_GAME = calculateWinner(squares);
-
-  const mockSquares = [
-    "dog",
-    "cat",
-    "wolf",
-    "fish",
-    "tiger",
-    "bird",
-    "horse",
-    "chicken",
-    "cow"
-  ]
-
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-// FUNCTIONS
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // COMPONENT
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -69,21 +47,21 @@
     * Dev Info ---------------------------------------------------
     * 
   */
-  function GameWrapper( { allowGridSelect, gridSize } ) {
+  const GameWrapper = ({ allowGridSelect, gridSize }) => {
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // STATE
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
       // State for showing/hiding the board or form
       const [
-        showBoard, 
-        setShowBoard
-      ] = useState(false);
+        showInput, 
+        setShowInput
+      ] = useState(true);
 
       // State for all the inputs
       const [
-        bingoWords, 
-        setBingoWords
+        bingoData, 
+        setBingoData
       ] = useState([]);
 
       // State for Board Size
@@ -116,34 +94,21 @@
     // FUNCTIONS
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-      // Change showBoard each time the button is clicked
-      const togglePlay = () => {
-        setShowBoard(!showBoard);
+      // Change showInput each time the button is clicked
+      const toggleView = () => {
+        setShowInput(!showInput);
       };
 
       // Update the list of bingo words
-      const handleInputChange = (values) => {
-        setBingoWords(values);
-      }
-    
+      const updateBingoData = (data) => {
+        setBingoData(data);
+      };
+
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // CONTENT
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-      /** 
-        * @description  Display the form or the bingo board
-        * @author       Luke Boyle
-        *  
-        * Mod Log ----------------------------------------------------
-        * Who    | When        | Why
-        * ------------------------------------------------------------
-        * Luke B | 18 Feb 2024 | Created
-        * Luke B | 20 Feb 2024 | Added conditional for showing grid select
-        * 
-      */
       return (
         <main className="Board-Container">
-
           {/* Settings for the Game */}
           <section id="gameSettings">
             {/* Select Board Size */}
@@ -167,24 +132,20 @@
           </section>
 
           {/* Board or Input */}
-          { showBoard ? 
-            (
-              <GameBoard
-                squares = { bingoWords }
-              />
-            ) : (
-              <WordInput 
-                bingoWords     = { bingoWords }
-                numFields      = { numFields }
-                allowAdd       = { false }
-                allowRemove    = { false }
-                talkToParent   = { handleInputChange }
-              />
-            )
-          }
+          {showInput ? (
+            <WordInput 
+              bingoData        = { bingoData }
+              updateBingoData  = { updateBingoData }
+            />
+          ) : (
+            <GameBoard 
+              bingoData  = { bingoData }
+            />
+          )}
 
+          {/* Instructions for the game */}
           <section id='GameInstructions'>
-            { !showBoard ? 
+            { showInput ? 
               ( // Input instruction
                 <div>
                   <Typography variant="body1"> Enter nine (9) items then click on "Let's Play!" </Typography>
@@ -199,19 +160,24 @@
             }
           </section>
 
-          {/* Button edit or play */}
-          <Button variant="contained" onClick={ togglePlay }>
-            { showBoard ? "Edit Values" : "Let's Play!" }
-          </Button>
+          <section>
+            {/* Button edit or play */}
+            <Button 
+              onClick = { toggleView }
+              variant = 'contained'
+            >
+              { showInput ? "Let's Play" : "Edit Words" }
+            </Button>
 
-          {/* Home button */}
-          <Button 
-            component = { Link } 
-            to        = "/"
-            variant   = 'contained'
-          > 
-            Go home <HouseOutlinedIcon />
-          </Button>
+            {/* Home button */}
+            <Button 
+              component = { Link } 
+              to        = "/"
+              variant   = 'contained'
+            > 
+              Go home <HouseOutlinedIcon />
+            </Button>
+          </section>
         </main>
       );
   };

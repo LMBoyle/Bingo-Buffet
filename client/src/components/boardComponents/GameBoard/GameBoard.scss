@@ -5,3 +5,10 @@
   cursor: pointer;
   position: relative;
 }
+
+table {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-collapse: collapse;
+  table-layout: fixed;
+}

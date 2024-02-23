@@ -24,10 +24,6 @@
   import Button             from '@mui/material/Button';
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-//  VARIABLES
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //  COMPONENT
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
   /** 
@@ -46,106 +42,54 @@
     * @param numFields
     * @param allowAdd
     * @param allowRemove
-    * @param talkToParent
+    * @param handleInputChange
   */
-  function WordInput( { bingoWords, numFields, allowAdd, allowRemove, talkToParent } ) {
+  const WordInput = ({ bingoData, updateBingoData }) => {
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // STATE
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-      // The input fields themselves
-      const [
-        inputFields,
-        setInputFields
-      ] = useState(Array(numFields).fill(""))
+      const [inputValues, setInputValues] = useState(Array(9).fill(''));
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // HOOKS
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-      // Pass the words back to the parent
       useEffect(() => {
-        talkToParent(inputFields.filter((field) => field.trim() !== ''))
-      }, [ inputFields, talkToParent ]);
-
-    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    // FUNCTIONS
-    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-    const handleAddField = () => {
-      // Add the field to the array
-      setInputFields([
-        ...inputFields, 
-        ""
-      ])
-    }
-
-    const handleRemoveField = ( index ) => {
-      // Check if any more fields can be removed
-      if (inputFields.length > numFields) {
-        const updatedFields = [...inputFields];
-        updatedFields.splice(index, 1);
-        setInputFields(updatedFields);
-      }
-    }
-
-    // Handle putting in data
-    const handleFieldInput = ( index, value ) => {
-      // Get all the data
-      const updatedField  = [...bingoWords];
-
-      // Set the current value and set it
-      updatedField[index] = value;
-      
-      // Set the fields
-      talkToParent(updatedField);
-    }
-
-    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    // HTML
-    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    return (
-      <section id="WordInput" className="Main-Section">
-        {/* INPUT FORM */}
-        <form>
-          {inputFields.map(( field, index ) => {
-            return (
-              <div key={index}>
-                {/* Word input */}
-                <input
-                  name        = 'word'
-                  placeholder = 'your word here'
-                  onChange    = { (e) => handleFieldInput( index, e.target.value ) }
-                  value       = { field }
-                />
-
-                {/* If fields can be removed */}
-                { (allowRemove && inputFields.length > numFields) &&
-                  <Button  
-                    onClick={() => handleRemoveField( index ) } 
-                    variant="contained"
-                    color="error"
-                  >
-                    Remove
-                  </Button>
-                }
-              </div>
-            )
-          })}
-        </form>
-        {/* If fields can be added */}
-        { allowAdd && 
-          <Button 
-            onClick={ handleAddField } 
-            variant="contained"
-            color="success"
-          > 
-            Add More..
-          </Button>
+        if (bingoData.length > 0) {
+          setInputValues(bingoData);
         }
-      </section>
-    );
-  }
+      }, [bingoData]);
+
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // HELPERS
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+      const handleChange = (index, value) => {
+        const newValues = [...inputValues];
+        newValues[index] = value;
+        setInputValues(newValues);
+        updateBingoData(newValues);
+      };
+
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // CONTENT
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+      return (
+        <section id="WordInput" className="Main-Section">
+          {inputValues.map((value, index) => (
+            <div key={index}>
+              <input
+                type      = "text"
+                value     = {value}
+                onChange  = {(e) => handleChange(index, e.target.value)}
+              />
+            </div>
+          ))}
+        </section>
+      );
+  };
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // EXPORT
