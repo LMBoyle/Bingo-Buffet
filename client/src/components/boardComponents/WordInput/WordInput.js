@@ -18,92 +18,78 @@
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
   // React Dependencies
-  import React, { useState } from "react";
+  import React, { useEffect, useState } from "react";
 
   // MUI Dependencies
   import Button             from '@mui/material/Button';
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-//  VARIABLES
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //  COMPONENT
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-  function WordInput( {numFields, allowAdd, allowRemove, callback} ) {
+  /** 
+    * @description  Word input form and its logic
+    * @author       Luke Boyle
+    *  
+    * Mod Log ----------------------------------------------------
+    * Who    | When        | Why
+    * ------------------------------------------------------------
+    * Luke B | 18 Feb 2024 | Created
+    * Luke B | 19 Feb 2024 | Moved some logic to GameWrapper
+    * Luke B | 19 Feb 2024 | Added ability to select how many fields to start with as well as add or remove fields
+    * 
+    * Dev Info ---------------------------------------------------
+    * @param bingoWords
+    * @param numFields
+    * @param allowAdd
+    * @param allowRemove
+    * @param handleInputChange
+  */
+  const WordInput = ({ bingoData, updateBingoData }) => {
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     // STATE
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    const [bingoWords, setBingoWords] = useState([
-      { 
-        word: ""
-      }
-    ])
-
-    const ADD_WORDS = (data) => {
-      // Add the field to the array
-      setBingoWords([
-        ...bingoWords, 
-        {word: ""}
-      ])
-    }
-
-    const REMOVE_FIELDS = (index) => {
-      let data = [...bingoWords];
-      data.splice(index, 1)
-      setBingoWords(data)
-    }
+      const [inputValues, setInputValues] = useState(Array(9).fill(''));
 
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    // FUNCTIONS
+    // HOOKS
     // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-    // Handle putting in data
-    const HANDLE_INPUT = (event, index) => {
-      // Get all the data
-      let data = [...bingoWords];
-
-      // Set the current value and set it
-      data[index][event.target.name] = event.target.value;
-      
-      // Set the fields
-      setBingoWords(data);
-    }
-
-    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    // HTML
-    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-    return (
-      <section id="WordInput" className="Main-Section">
-        {/* INPUT FORM */}
-        <div> This functionality is still in progress. You can click play and play with pre-set words. Check back soon!</div>
-        {/* If fields can be added */}
-        { allowAdd ? 
-          (
-            <Button 
-              onClick={ ADD_WORDS } 
-              variant="contained"
-              color="success"
-            > 
-              Add More..
-            </Button>
-          ) : (
-            null
-          )
+      useEffect(() => {
+        if (bingoData.length > 0) {
+          setInputValues(bingoData);
         }
-        <br />
-        {/* <Button 
-          onClick={() => callback(bingoWords) } 
-          variant="contained"
-          color="success"
-        > 
-          Submit
-        </Button> */}
-      </section>
-    );
-  }
+      }, [bingoData]);
+
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // HELPERS
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+      const handleChange = (index, value) => {
+        const newValues = [...inputValues];
+        newValues[index] = value;
+        setInputValues(newValues);
+        updateBingoData(newValues);
+      };
+
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // CONTENT
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+      return (
+        <section id="WordInput" className="Main-Section">
+          {inputValues.map((value, index) => (
+            <div key={index}>
+              <input
+                type      = "text"
+                value     = {value}
+                onChange  = {(e) => handleChange(index, e.target.value)}
+              />
+            </div>
+          ))}
+        </section>
+      );
+  };
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // EXPORT

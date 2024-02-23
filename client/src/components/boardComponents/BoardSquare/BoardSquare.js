@@ -21,12 +21,12 @@
   import React, { useState } from "react";
 
   // MUI Dependencies
+  import Grid from '@mui/material/Grid';
 
   // Custom CSS
   import './BoardSquare.scss';
 
   // Other Dependencies
-  import ScaleText from "react-scale-text"
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // VARIABLES
@@ -52,12 +52,19 @@
 // COMPONENT
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-  function Square( { value, index, colour } ) {
+  function Square( { value, index } ) {
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // STATE
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
     const [
       buttonColor, 
       setButtonColor
     ] = useState(WHITE);
 
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // FUNCTIONS
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
     function handleColourChange( e ) {
       console.log('clicked');
@@ -67,17 +74,19 @@
       setButtonColor(NEW_COLOUR);
     }
 
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    // CONTENT
+    // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     return (
-      <button
+      <td
         className = "square" 
         onClick   = { handleColourChange }
         index     = { index }
         style     = { { backgroundColor: buttonColor } }
+        key       = { index }
       >
-        <ScaleText widthOnly={true}>
-          { value }
-        </ScaleText>
-      </button>
+        { value }
+      </td>
     );
   }
 
