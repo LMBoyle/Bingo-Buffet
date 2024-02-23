@@ -6,10 +6,11 @@
  * Dev Log --------------------------------------------------------
  * Who    | When         | What                       | Why
  * ----------------------------------------------------------------
- * Luke B | 17 Feb 2024 | DEPENDENCIES                | Created
- * Luke B | 17 Feb 2024 | VARIABLES                   | Created
- * Luke B | 17 Feb 2024 | COMPONENT                   | Created
- * Luke B | 17 Feb 2024 | EXPORT                      | Created
+ * Luke B | 17 Feb 2024 | DEPENDENCIES                    | Created
+ * Luke B | 17 Feb 2024 | VARIABLES                       | Created
+ * Luke B | 17 Feb 2024 | COMPONENT                       | Created
+ * Luke B | 17 Feb 2024 | EXPORT                          | Created
+ * Luke B | 23 Feb 2024 | TextField, Box, WordInput.scss  | Added
  * 
 */
 
@@ -22,6 +23,11 @@
 
   // MUI Dependencies
   import Button             from '@mui/material/Button';
+  import TextField          from '@mui/material/TextField';
+  import Box                from '@mui/material/Box';
+
+  // Styles
+  import './WordInput.scss';
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 //  COMPONENT
@@ -36,6 +42,7 @@
     * Luke B | 18 Feb 2024 | Created
     * Luke B | 19 Feb 2024 | Moved some logic to GameWrapper
     * Luke B | 19 Feb 2024 | Added ability to select how many fields to start with as well as add or remove fields
+    * Luke B | 23 Feb 2024 | Added input fields styling
     * 
     * Dev Info ---------------------------------------------------
     * @param bingoWords
@@ -78,15 +85,23 @@
 
       return (
         <section id="WordInput" className="Main-Section">
-          {inputValues.map((value, index) => (
-            <div key={index}>
-              <input
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            {inputValues.map((value, index) => (
+              <TextField
                 type      = "text"
+                label     = { "Word "+ (index+1) }
                 value     = {value}
                 onChange  = {(e) => handleChange(index, e.target.value)}
               />
-            </div>
-          ))}
+            ))}
+          </Box>
         </section>
       );
   };

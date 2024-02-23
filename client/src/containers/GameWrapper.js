@@ -8,6 +8,7 @@
  * Luke B | 18 Feb 2024  | VARIABLES                  | Created
  * Luke B | 18 Feb 2024  | COMPONENT                  | Created
  * Luke B | 18 Feb 2024  | EXPORT                     | Created
+ * Luke B | 23 Feb 2024  | MUI Stack                  | Added
  * 
 */
 
@@ -17,11 +18,12 @@
 
   // React Dependencies
   import React, { useState, useEffect } from "react";
+  import { Link }                       from 'react-router-dom';
 
   // MUI Dependencies
   import Button       from '@mui/material/Button';
-  import { Link }     from 'react-router-dom';
   import Typography   from '@mui/material/Typography';
+  import Stack        from '@mui/material/Stack';
 
   // MUI Icons
   import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
@@ -44,6 +46,7 @@
     * Luke B | 18 Feb 2024 | Created
     * Luke B | 19 Feb 2024 | Added logic to go between children
     * Luke B | 20 Feb 2024 | Added allowGridSelect, gridSize
+    * Luke B | 23 Feb 2024 | Added Stack around buttons
     * Dev Info ---------------------------------------------------
     * 
   */
@@ -159,24 +162,28 @@
               )
             }
           </section>
+          
+          <br/>
 
           <section>
-            {/* Button edit or play */}
-            <Button 
-              onClick = { toggleView }
-              variant = 'contained'
-            >
-              { showInput ? "Let's Play" : "Edit Words" }
-            </Button>
+            <Stack spacing={2} direction="row">
+              {/* Button edit or play */}
+              <Button 
+                onClick = { toggleView }
+                variant = 'contained'
+              >
+                { showInput ? "Let's Play" : "Edit Words" }
+              </Button>
 
-            {/* Home button */}
-            <Button 
-              component = { Link } 
-              to        = "/"
-              variant   = 'contained'
-            > 
-              Go home <HouseOutlinedIcon />
-            </Button>
+              {/* Home button */}
+              <Button 
+                component = { Link } 
+                to        = "/"
+                variant   = 'contained'
+              > 
+                Go home <HouseOutlinedIcon />
+              </Button>
+            </Stack>
           </section>
         </main>
       );
