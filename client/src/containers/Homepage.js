@@ -69,6 +69,7 @@
             reroute     = {game.underConstruct}
           />
         ))}
+        <p> Thanks for visiting. See the source code <a href='https://github.com/LMBoyle/Bingo-Buffet'> here </a></p>
       </main>
     );
   };

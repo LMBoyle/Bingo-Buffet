@@ -29,6 +29,7 @@
 
   // Import containers
   import Homepage     from '../containers/Homepage';
+  import Footer       from '../components/layout/Footer/Footer'
   import TicTacBingo  from '../containers/Games/TicTacBingo';
 
   // Import components
@@ -40,6 +41,7 @@
 
   const APP = () => {
     return (
+      <>
       <Router>
         <div className="App">
           {/* Navbar */}
@@ -102,7 +104,7 @@
                     to        = "/"
                     variant   = 'contained'
                   > 
-                    Get me out of here! 
+                    Back away slowly...
                   </Button>
                 </div>
               } 
@@ -129,6 +131,9 @@
           </Routes>
         </div>
       </Router>
+
+      <Footer/>
+      </>
     );
   }
 
